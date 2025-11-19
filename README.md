@@ -10,7 +10,7 @@ Use this URL as the base for all API and WebSocket connections.
 
 🔗 Public API Endpoint
 
-Your backend exposes a live API for fetching aggregated meme-coin data:
+Your backend exposes a live API for fetching aggregated meme-coin data: 
 
 👉 GET – Fetch tokens
 https://real-time-coin-aggregator.onrender.com/api/tokens
