@@ -130,7 +130,7 @@ Example Message Received:
 
 WebSocket sends a new update every time the background job refreshes token data.
 PieSocket is used only for testing and demonstrating WebSocket functionality during the live demo.
-Browsers connect to WebSocket URLs directly through the url in piesocket : wss://real-time-coin-aggregator.onrender.com/ws
+Browsers connect to WebSocket URLs directly through the url in piesocket :  ** wss://real-time-coin-aggregator.onrender.com/ws **
 This was useful for real time distrubuted updates.
 
 🔄 Background Task — Token Refresher
