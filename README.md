@@ -25,6 +25,10 @@ Your backend supports live streaming token price updates using WebSockets.
 
 Connect to this URL to receive push-based live token updates every 10 seconds with help of piesockets which I mentioned below.
 
+
+Postman 
+This was used for rapid API calls for multiple clients to access at a time in parllel manner.
+
 ---
 
 #  Features
