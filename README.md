@@ -37,25 +37,7 @@ WebSocket Updates
 - **Axios + axios-retry**  
   → Handles temporary network/API failures automatically.
 
----
 
-# 📁 Folder Structure
-
-src/
-│── api/
-│ └── tokens.js
-│── controllers/
-│ └── tokens.js
-│── jobs/
-│ └── refresher.js
-│── services/
-│ └── dexscreener.js
-│── state/
-│ └── tokens.js
-│── ws/
-│ └── server.js
-└── index.js
----
 
 # 🌐 REST API Documentation
 
