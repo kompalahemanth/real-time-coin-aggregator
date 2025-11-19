@@ -127,7 +127,12 @@ Example Message Received:
   "event": "live_update",
   "count": 18
 }
+
 WebSocket sends a new update every time the background job refreshes token data.
+PieSocket is used only for testing and demonstrating WebSocket functionality during the live demo.
+Browsers connect to WebSocket URLs directly through the url in piesocket : wss://real-time-coin-aggregator.onrender.com/ws
+This was useful for real time distrubuted updates.
+
 🔄 Background Task — Token Refresher
 Job: startRefresher()
 Runs every 5 seconds:
@@ -136,6 +141,8 @@ Cleans & normalizes response.
 Saves tokens JSON to Redis.
 Broadcasts update count to WebSocket clients.
 Environment variable:REFRESH_INTERVAL_MS=10000
+
+
 🚀 Local Development Setup
 1. Install dependencies
 npm install
