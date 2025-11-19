@@ -21,21 +21,72 @@ Use this URL as the base for all API and WebSocket connections.
 
 ---
 
-# 🧱 Architecture Overview
+🏗 System Architecture
 
-Dexscreener API → Fetcher Job → Redis Cache → REST API → Client App
-↓
-WebSocket Updates
+This project is a real-time crypto token aggregator built to replicate the behaviour of Axiom Trade’s Discover page.
+It continuously fetches token data from multiple external sources, merges them intelligently, caches them for fast access, and pushes live updates to connected clients via WebSockets.
+
+
+              ┌──────────────────────────────┐
+              │  DexScreener API             │
+              └───────────────┬──────────────┘
+                              │
+                              ▼
+              ┌──────────────────────────────┐
+              │  Jupiter API                 │
+              └───────────────┬──────────────┘
+                              │
+                              ▼
+                   (1) Fetch & Normalize
+                              │
+                              ▼
+              ┌──────────────────────────────┐
+              │  Aggregator Module           │
+              │  - merge tokens              │
+              │  - remove duplicates         │
+              │  - calculate sorting fields  │
+              └───────────────┬──────────────┘
+                              │
+                              ▼
+                   (2) Cache in Redis
+                              │
+                              ▼
+              ┌──────────────────────────────┐
+              │  Redis (External Cloud DB)   │
+              └───────────────┬──────────────┘
+                              │
+                ┌─────────────┴───────────────┐
+                │                               │
+                ▼                               ▼
+     (3) API Server (Express)          (4) WebSocket Server
+     GET /api/tokens                   Live push every refresh
+     Paginated tokens                  Broadcast token updates
+                │                               │
+                └─────────────┬─────────────────┘
+                              ▼
+                     Client (browser/Postman)
 
 ### ⚙️ Design Decisions  
 - **Redis used instead of in-memory storage**  
-  → Ensures fast reads & horizontal scaling.  
+  → Ensures fast reads & horizontal scaling.
+  → O(1) reads
+  → Cloud-hosted, zero-maintenance 
+  → Extremely low latency 
 - **WebSockets instead of polling**  
-  → Low latency real-time updates.  
+  → Low latency real-time updates.
+  →  Persistent connection
+  →  No re-connection overhead
+  →  Real-time push architecture
 - **Module-based code structure**  
-  → Easy to extend, debug, and scale.  
+  → Easy to extend, debug, and scale.
+  → Fetches all tokens in background
+  → API only reads from Redis
+  → WebSocket broadcasts new data
 - **Axios + axios-retry**  
-  → Handles temporary network/API failures automatically.
+   → Handles temporary network/API failures automatically.
+   → Rate limit
+   → Timeout
+   → Reduced failure rate
 
 
 
