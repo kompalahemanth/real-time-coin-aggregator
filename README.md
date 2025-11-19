@@ -1,34 +1,44 @@
-# 🚀 Real-Time Meme Coin Aggregator  
+#  Real-Time Meme Coin Aggregator  
 A production-ready backend service that aggregates **live meme-coin market data** from Dexscreener, caches it in Redis, exposes REST APIs, and streams updates through WebSockets in real time.
 
 ---
 
-## 🔗 **LIVE BACKEND URL (Render Deployment)**
-### 👉 **https://real-time-coin-aggregator.onrender.com**
+##  **LIVE BACKEND URL (Render Deployment)**
+###  **https://real-time-coin-aggregator.onrender.com**
 
 Use this URL as the base for all API and WebSocket connections.
 
-🔗 Public API Endpoint
+ Public API Endpoint
 
 Your backend exposes a live API for fetching aggregated meme-coin data: 
 
-👉 GET – Fetch tokens
+ GET – Fetch tokens
 https://real-time-coin-aggregator.onrender.com/api/tokens
 
+ WebSocket Real-Time Updates
+
+Your backend supports live streaming token price updates using WebSockets.
+
+ WebSocket URL
+
+ wss://real-time-coin-aggregator.onrender.com/ws
+
+Connect to this URL to receive push-based live token updates every 10 seconds with help of piesockets which I mentioned below.
+
 ---
 
-# 📌 Features
-- ⚡ **Real-Time Price Updates** from Dexscreener  
-- 🧠 **Redis Caching Layer** for fast and scalable read operations  
-- 🌐 **REST API** with pagination for token lists  
-- 🔥 **WebSocket Server** streaming live update events  
-- 🔄 **Auto-refresh job every 10 seconds**  
-- 🚀 **Fully deployed on Render (Free tier)**  
-- 📦 **Modular architecture** (API, services, WS, jobs, controllers, state)
+#  Features
+-  **Real-Time Price Updates** from Dexscreener  
+-  **Redis Caching Layer** for fast and scalable read operations  
+-  **REST API** with pagination for token lists  
+-  **WebSocket Server** streaming live update events  
+-  **Auto-refresh job every 10 seconds**  
+-  **Fully deployed on Render (Free tier)**  
+-  **Modular architecture** (API, services, WS, jobs, controllers, state)
 
 ---
 
-🏗 System Architecture
+ System Architecture
 
 This project is a real-time crypto token aggregator built to replicate the behaviour of Axiom Trade’s Discover page.
 It continuously fetches token data from multiple external sources, merges them intelligently, caches them for fast access, and pushes live updates to connected clients via WebSockets.
@@ -97,7 +107,7 @@ It continuously fetches token data from multiple external sources, merges them i
 
 
 
-# 🌐 REST API Documentation
+#  REST API Documentation
 
 ### ### **GET /**  
 Health check endpoint.  
@@ -140,7 +150,7 @@ PieSocket is used only for testing and demonstrating WebSocket functionality dur
 Browsers connect to WebSocket URLs directly through the url in piesocket :  ** wss://real-time-coin-aggregator.onrender.com/ws **
 This was useful for real time distrubuted updates.
 
-🔄 Background Task — Token Refresher
+ Background Task — Token Refresher
 Job: startRefresher()
 Runs every 5 seconds:
 Fetches top meme-coins from Dexscreener.
@@ -150,7 +160,7 @@ Broadcasts update count to WebSocket clients.
 Environment variable:REFRESH_INTERVAL_MS=10000
 
 
-🚀 Local Development Setup
+ Local Development Setup
 1. Install dependencies
 npm install
 2. Create .env file
@@ -174,7 +184,7 @@ ESM Modules
 
 
 
-👨‍💻 Author
+ Author
 
 Hemanth Kompala
 Real-Time Systems & Backend Developer
@@ -182,14 +192,14 @@ Real-Time Systems & Backend Developer
 
 ---
 
-## ✅ **Your README is now complete, professional, and industry-standard.**
+##  **Your README is now complete, professional, and industry-standard.**
 
 If you want, I can also create:
 
-### 🖼️ A README Banner  
-### ✔️ Shields.io badges  
-### 📊 API docs in Swagger format  
-### 🎨 A frontend dashboard UI plan  
+###  A README Banner  
+###  Shields.io badges  
+###  API docs in Swagger format  
+###  A frontend dashboard UI plan  
 
 Just tell me!
 
