@@ -18,7 +18,8 @@ app.get("/", (req, res) => {
   res.send("Meme coin aggregator backend is running");
 });
 
-app.use(tokensRoute);
+app.use("/api", tokensRoute);
+
 
 const port = Number(process.env.PORT || 3000);
 const server = createServer(app);
@@ -43,7 +44,7 @@ const refreshInterval = Number(process.env.REFRESH_INTERVAL_MS || 10000);
   }, refreshInterval);
 
   server.listen(port, () => {
-    console.log(`🚀 Server running on ${port}`);
+    console.log(`Server running on ${port}`);
   });
   startWebSocketServer(server);
 })();
